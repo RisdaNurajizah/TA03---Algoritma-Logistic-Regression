@@ -1,0 +1,14 @@
+# Abaikan virtual environment
+venv/
+.env/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# File model besar (opsional)
+*.pkl
+
+# File konfigurasi OS/editor
+.DS_Store
+*.log

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Analisis Sentimen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <class="container">
+        <h1>Analisis Sentimen Ulasan</h1>
+
+        <form action="/predict" method="POST" class="form-box">
+            <textarea name="review" placeholder="Masukkan teks ulasan di sini..." required>{{ review or '' }}</textarea>
+            <button type="submit">Prediksi</button>
+        </form>
+
+
+        {% if result %}
+        <div class="result-card">
+            <h3>Hasil Analisis</h3>
+            <div class="result-grid">
+                <div class="card">
+                    <span class="icon">😊</span>
+                    <p>Prediksi Sentimen</p>
+                    <h4>{{ result }}</h4>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Visualisasi Model</h3>
+            <div class="chart-container">
+                <div class="chart">
+                    <h4>Distribusi Hasil Prediksi</h4>
+                    <img src="{{ distribusi }}" alt="Distribusi Hasil Prediksi" width="300">
+                </div>
+                <div class="chart">
+                    <h4>ROC Curve Logistic Regression</h4>
+                    <img src="{{ roc }}" alt="ROC Curve" width="300">
+                </div>
+                <div class="chart">
+                    <h4>Confusion Matrix Logistic Regression</h4>
+                    <img src="{{ cm }}" alt="Confusion Matrix" width="300">
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+        </div>
+</body>
+
+</html>
